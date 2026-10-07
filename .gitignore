@@ -4,3 +4,7 @@
 !.SRCINFO
 !coredeck.desktop
 !update.sh
+!check.sh
+!.github/
+!.github/workflows/
+!.github/workflows/*.yml
