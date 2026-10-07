@@ -2,7 +2,7 @@
 
 pkgname=coredeck-bin
 _name=CoreDeck
-pkgver=0.13.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Native desktop command center for the Android SDK (AVDs, system images, APK inspection)'
 
