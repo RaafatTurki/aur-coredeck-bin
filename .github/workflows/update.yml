@@ -96,7 +96,7 @@ jobs:
 
           unset GIT_SSH_COMMAND
           git add PKGBUILD .SRCINFO
-          git commit -m "coredeck-bin $ver"
+          git commit -m "chore: auto bumped to $ver"
           git push
 
 
