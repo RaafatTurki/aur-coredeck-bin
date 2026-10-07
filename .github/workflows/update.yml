@@ -72,11 +72,13 @@ jobs:
           fi
           ver=$(sed -n 's/^pkgver=//p' PKGBUILD)
 
-          install -dm700 ~/.ssh
-          printf '%s\n' "$AUR_SSH_KEY" > ~/.ssh/aur
-          chmod 600 ~/.ssh/aur
-          ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts
-          export GIT_SSH_COMMAND='ssh -i ~/.ssh/aur'
+          ssh_dir="$HOME/.ssh"
+          install -dm700 "$ssh_dir"
+          printf '%s\n' "$AUR_SSH_KEY" > "$ssh_dir/aur"
+          chmod 600 "$ssh_dir/aur"
+          ssh-keyscan aur.archlinux.org > "$ssh_dir/known_hosts"
+          test -s "$ssh_dir/known_hosts"
+          export GIT_SSH_COMMAND="ssh -i $ssh_dir/aur -o UserKnownHostsFile=$ssh_dir/known_hosts"
 
           git config --global user.name  "$GIT_NAME"
           git config --global user.email "$GIT_EMAIL"
