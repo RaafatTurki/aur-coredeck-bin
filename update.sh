@@ -28,6 +28,8 @@ files=$(bsdtar -tf "$pkg")
 grep -qx 'usr/bin/coredeck' <<<"$files"
 grep -qx 'opt/coredeck/CoreDeck' <<<"$files"
 grep -q '^opt/coredeck/assets/' <<<"$files"
+grep -qx 'usr/share/applications/com.devmuaz.coredeck.desktop' <<<"$files"
+grep -q '^usr/share/icons/hicolor/.*/apps/com.devmuaz.coredeck.png$' <<<"$files"
 
 # generates .SRCINFO
 makepkg --printsrcinfo > .SRCINFO

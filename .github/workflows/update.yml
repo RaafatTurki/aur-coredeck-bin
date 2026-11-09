@@ -84,9 +84,10 @@ jobs:
           git config --global user.email "$GIT_EMAIL"
 
           git clone "ssh://aur@aur.archlinux.org/$AUR_PKG.git" /tmp/aur
-          cp PKGBUILD .SRCINFO coredeck.desktop /tmp/aur/
+          cp PKGBUILD .SRCINFO /tmp/aur/
           git -C /tmp/aur checkout -B master
-          git -C /tmp/aur add PKGBUILD .SRCINFO coredeck.desktop
+          git -C /tmp/aur rm -q --ignore-unmatch coredeck.desktop
+          git -C /tmp/aur add PKGBUILD .SRCINFO
           if git -C /tmp/aur diff --cached --quiet; then
             echo "AUR already has this version"
           else
